@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Irene 💖</title>
+<style>
+    body {
+        margin:0;
+        padding:0;
+        font-family: 'Arial', sans-serif;
+        background: #ffe4e1;
+        overflow-x: hidden;
+        text-align: center;
+    }
+    /* Brillos suaves animados */
+    .sparkle {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: #fff0f5;
+        border-radius: 50%;
+        opacity: 0.7;
+        animation: sparkle 5s linear infinite;
+    }
+    @keyframes sparkle {
+        0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+        50% { transform: translateY(-200px) translateX(100px) scale(1.5); opacity: 0.3; }
+        100% { transform: translateY(0) translateX(-50px) scale(1); opacity: 0.7; }
+    }
+
+    h1 {
+        color: #ff69b4;
+        margin: 20px 0;
+    }
+    #text {
+        font-size: 1.1em;
+        max-width: 600px;
+        margin: 0 auto 30px auto;
+        line-height: 1.6;
+        color: #333;
+    }
+    img {
+        max-width: 90%;
+        margin: 15px 0;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    audio {
+        margin: 20px 0;
+        width: 100%;
+        max-width: 400px;
+    }
+    /* Botón Sí */
+    .love-button {
+        display: inline-block;
+        background: #ff69b4;
+        color: white;
+        font-size: 1.5em;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(255,105,180,0.6);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .love-button:active {
+        transform: scale(1.2);
+        box-shadow: 0 0 25px rgba(255,105,180,0.9);
+    }
+    .heart {
+        position: absolute;
+        font-size: 20px;
+        color: red;
+        animation: rise 1s ease-out forwards;
+        pointer-events: none;
+    }
+    @keyframes rise {
+        0% {opacity: 1; transform: translateY(0) scale(1);}
+        100% {opacity: 0; transform: translateY(-100px) scale(1.5);}
+    }
+</style>
+</head>
+<body>
+
+<h1>Mi amor 💖</h1>
+
+<p id="text"></p>
+
+<!-- Fotos tiernas apiladas -->
+<div>
+    <img src="foto1.jpg" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+</div>
+
+<!-- Música automática -->
+<audio autoplay loop>
+    <source src="telepatia.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- Botón Sí con animación de corazones -->
+<button class="love-button" id="loveBtn">Sí ❤️</button>
+
+<script>
+    // Efecto máquina de escribir
+    const mensaje = `Mi amor, de verdad, al momento de yo ver que me terminaste se me cayo el corazón, por que de verdad deseo poder casarme contigo, deseo poder volver a dormir contigo, estuve desesperado, llorando, asustado, no sabia que hacer Irene, solo pude pensar en los momentos donde eramos felices aunque solo paso una hora de que me terminaste, pero entiendo por que pensaste que te termine, fue mi culpa, pero yo si quiero estar contigo y disfrutar de todo tu amor y cariño, se muy bien que ya no me amas de la misma manera, de seguro volveras conmigo por pena, talvez incluso te vayas con otro por que te hago sentir muy mal, de seguro ya tienes ojos para otro pero, Irene, yo te amo, y siempre lo hare, te prometo que me enamore de ti desde la primera vez que me dijiste vago, me enloqueci por ti mi chocorramito precioso, no pude parar de pensar en ti desde eso, me ponia muy celoso cuando hablabas con otro, aunque no fueses mi novia queria decirte que tu eres mia, espero te guste esto, me costo mucho, pero te AMO DEMASIADO MI PEQUEÑA ENOJONAAA MWAAA ❤❤❤`;
+    let i = 0;
+    const textElement = document.getElementById('text');
+    function typeWriter() {
+        if (i < mensaje.length) {
+            textElement.innerHTML += mensaje.charAt(i);
+            i++;
+            setTimeout(typeWriter, 20);
+        }
+    }
+    typeWriter();
+
+    // Botón animación corazones
+    const btn = document.getElementById('loveBtn');
+    btn.addEventListener('click', e => {
+        for(let i=0; i<5; i++){
+            const heart = document.createElement('span');
+            heart.classList.add('heart');
+            heart.style.left = (Math.random() * btn.offsetWidth) + 'px';
+            heart.style.animationDuration = (0.8 + Math.random()*0.5) + 's';
+            heart.textContent = '❤';
+            btn.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        }
+    });
+</script>
+
+</body>
+</html>
