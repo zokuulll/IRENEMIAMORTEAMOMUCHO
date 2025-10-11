@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Para mi Futura Esposa Irene 💖</title>
+<style>
+  :root{
+    --pink:#ff9acb;
+    --pink-deep:#ff66b2;
+    --bg1:#fff0f6;
+    --bg2:#e7f7ff;
+  }
+  html,body{height:100%;margin:0;font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--pink-deep);-webkit-font-smoothing:antialiased}
+  /* fondo animado (ponlo detrás) */
+  .background{
+    position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+  }
+  .cute {
+    position:absolute;
+    width:40px; height:40px;
+    opacity:0.85;
+    transform-origin:center;
+    will-change: transform, opacity;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes floatCute {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-24px) rotate(6deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+  }
+
+  /* corazones flotando */
+  .bubble {
+    position:fixed;
+    bottom:-20px;
+    width:14px; height:14px; border-radius:50%;
+    opacity:.8;
+    z-index:0;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity:.9; }
+    100% { transform: translateY(-120vh) scale(.6); opacity:0; }
+  }
+
+  /* contenido principal sobre el fondo */
+  .content{
+    position:relative; z-index:2; max-width:760px; margin:0 auto; padding:28px 18px 60px; text-align:center;
+  }
+  h1{ margin:6px 0 18px; color:var(--pink-deep); font-size:1.5rem; }
+  #text{
+    display:block;
+    background: rgba(255,255,255,0.75);
+    padding:18px;
+    border-radius:14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    color:#333;
+    line-height:1.6;
+    font-size:1.02rem;
+    margin: 0 auto 18px;
+    text-align:left;
+    max-width:720px;
+    white-space:pre-wrap;
+  }
+
+  /* fotos apiladas */
+  .photos { margin-top:14px; }
+  .photos img{
+    display:block;
+    margin:14px auto;
+    width:calc(100% - 40px);
+    max-width:520px;
+    border-radius:12px;
+    box-shadow:0 10px 22px rgba(0,0,0,0.12);
+  }
+
+  /* video */
+  .video-wrap{ margin:18px auto; }
+  video{
+    width:calc(100% - 40px);
+    max-width:520px;
+    border-radius:12px;
+    box-shadow:0 10px 22px rgba(0,0,0,0.12);
+  }
+
+  /* pregunta y boton */
+  h2{ margin-top: 26px; color:var(--pink); font-size:1.4rem; text-shadow:0 0 8px rgba(255,182,193,.3) }
+  .btn {
+    display:inline-block;
+    background: linear-gradient(90deg,var(--pink),var(--pink-deep));
+    color:#fff; border:none; padding:14px 40px; font-size:1.1rem; border-radius:999px; cursor:pointer;
+    box-shadow: 0 8px 30px rgba(255,105,180,0.26);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:active{ transform: scale(1.08); box-shadow:0 14px 40px rgba(255,105,180,0.38) }
+
+  /* brillo rápido (cuando se presiona) */
+  .btn.sparkle {
+    animation: sparkle .9s ease forwards;
+  }
+  @keyframes sparkle {
+    0% { box-shadow: 0 8px 30px rgba(255,105,180,0.26) ; transform: scale(1);}
+    50% { box-shadow: 0 20px 80px rgba(255,140,190,0.9); transform: scale(1.12);}
+    100% { box-shadow: 0 8px 30px rgba(255,105,180,0.26); transform: scale(1);}
+  }
+
+  /* respuesta mostrada */
+  #response {
+    margin-top:18px;
+    font-weight:700;
+    color:var(--pink-deep);
+    font-size:1.15rem;
+    opacity:0;
+    transform: translateY(6px) scale(.99);
+    transition: all .45s cubic-bezier(.2,.9,.3,1);
+    text-shadow: 0 4px 14px rgba(255,182,193,.25);
+  }
+  #response.visible { opacity:1; transform: translateY(0) scale(1); }
+
+  /* responsive tweaks */
+  @media (max-width:480px){
+    h1{ font-size:1.05rem; margin-top:28px; }
+    #text{ font-size:0.98rem; padding:14px; }
+    .btn{ padding:12px 28px; font-size:1rem; }
+  }
+</style>
+</head>
+<body>
+  <!-- fondo con animalitos y burbujas (se crean por JS) -->
+  <div class="background" id="bg"></div>
+
+  <div class="content">
+    <h1>Mi amor 💖</h1>
+
+    <div id="text" aria-live="polite"></div>
+
+    <!-- fotos apiladas visibles -->
+    <div class="photos">
+      <img src="foto1.jpg" alt="Foto tierna 1">
+      <img src="foto2.jpg" alt="Foto tierna 2">
+      <img src="foto3.jpg" alt="Foto tierna 3">
+    </div>
+
+    <!-- video (si lo subiste) -->
+    <div class="video-wrap">
+      <video id="video" controls playsinline preload="metadata">
+        <source src="tiktok.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
+    </div>
+
+    <h2>¿Quieres ser mi novia? 💞</h2>
+
+    <button id="loveBtn" class="btn" aria-label="Sí, acepto">Sí ❤️</button>
+
+    <div id="response" role="status" aria-live="polite"></div>
+
+    <!-- audio (debe subir telepatia.mp3 al repo) -->
+    <audio id="music" loop preload="auto">
+      <source src="telepatia.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+<script>
+  /* ======= MÁQUINA DE ESCRIBIR ======= */
+  const mensaje = `Mi amor, de verdad, al momento de yo ver que me terminaste se me cayo el corazon, 
+por que de verdad deseo poder casarme contigo, deseo poder volver a dormir contigo, 
+estuve desesperado, llorando, asustado, no sabia que hacer irene, solo pude pensar 
+en los momentos donde eramos felices aunque solo paso una hora de que me terminaste, 
+pero entiendo por que pensaste que te termine, fue mi culpa, pero yo si quiero estar contigo 
+y disfrutar de todo tu amor y cariño, se muy bien que ya no me amas de la misma manera, 
+de seguro volveras conmigo por pena, talvez incluso te vayas con otro por que te hago sentir muy mal, 
+de seguro ya tienes ojos para otro pero, irene, yo te amo, y siempre lo hare, 
+te prometo que me enamore de ti desde la primera vez que me dijiste vago, 
+me enloqueci por ti mi chocorramito precioso, no pude parar de pensar en ti desde eso, 
+me ponia muy celoso cuando hablabas con otro, aunque no fueses mi novia queria decirte que tu eres mia, 
+espero te guste esto, me costo mucho, pero te AMO DEMASIADO MI PEQUEÑA ENOJONAAA MWAAA ❤❤❤`;
+  const textEl = document.getElementById('text');
+  let idx = 0;
+  function typeWriter(){
+    if(idx < mensaje.length){ textEl.textContent += mensaje.charAt(idx); idx++; setTimeout(typeWriter, 18); }
+  }
+  typeWriter();
+
+  /* ======= MÚSICA: intentar autoplay, si falla reproducir al primer click ======= */
+  const music = document.getElementById('music');
+  window.addEventListener('load', () => {
+    const p = music.play();
