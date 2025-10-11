@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Para Mi Futura Esposa 💖</title>
+<style>
+:root{--pink:#ff9acb;--pink-deep:#ff66b2;--bg1:#fff0f6;--bg2:#e7f7ff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;font-family:"Poppins","Comic Sans MS",Arial,sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--pink-deep);text-align:center;overflow-x:hidden;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.sparkle,.star,.heart-bg,.confetti{position:absolute;border-radius:50%;opacity:0.8;filter: blur(1.5px);}
+.sparkle{width:5px;height:5px;background:linear-gradient(45deg,#fff,#ffcce0);animation:sparkleMove 6s linear forwards;}
+.star{width:3px;height:3px;background:#fff7aa;animation:starMove 4s linear infinite;}
+.heart-bg{width:12px;height:12px;background:#ff99cc;animation:floatHeart 6s linear infinite;}
+.confetti{width:6px;height:6px;background:linear-gradient(45deg,#ff99cc,#ff66b2);animation:confettiFall 2s linear forwards;}
+@keyframes sparkleMove{0%{transform:translateY(0) scale(1);opacity:1;}100%{transform:translateY(-120vh) scale(0.5);opacity:0;}}
+@keyframes starMove{0%,100%{opacity:0.7;}50%{opacity:1;}}
+@keyframes floatHeart{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(-150vh) rotate(360deg);}}
+@keyframes floatImg{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+@keyframes glowImg{0%,100%{filter:drop-shadow(0 0 2px #ff9acb);}50%{filter:drop-shadow(0 0 8px #ffcce0);}}
+@keyframes heartbeat{0%,100%{transform:scale(1) rotate(-45deg);}50%{transform:scale(1.2) rotate(-45deg);}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@keyframes sparkleText{0%,100%{text-shadow:0 0 2px #ff9acb,0 0 4px #ffcce0;}50%{text-shadow:0 0 8px #ff66b2,0 0 16px #ffb6c1;}}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(150vh) rotate(360deg);opacity:0;}}
+.wrap{position:relative;z-index:10;max-width:700px;margin:0 auto;padding:40px 15px 80px;animation:fadeIn 1s ease forwards;}
+h1{font-size:2rem;color:#ff4d94;text-shadow:0 0 16px #ffcce0;margin-bottom:20px;animation:fadeIn 1s ease forwards;}
+.main-text{background:rgba(255,255,255,.9);border-radius:16px;padding:20px;line-height:1.6;font-size:1rem;color:#ff3f8a;box-shadow:0 8px 20px rgba(0,0,0,.08);text-align:left;white-space:pre-wrap;animation:fadeIn 1s ease forwards;}
+.carousel{position:relative;width:100%;max-width:500px;margin:20px auto;overflow:hidden;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,.12);}
+.carousel-inner{display:flex;transition:transform 0.5s ease;}
+.carousel-inner img{width:100%;flex-shrink:0;animation:floatImg 3s ease-in-out infinite alternate, glowImg 2s ease-in-out infinite alternate;}
+video{width:calc(100% - 40px);max-width:500px;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.12);display:block;margin:20px auto;}
+h2{margin-top:30px;color:#ff4d94;font-size:1.3rem;text-shadow:0 0 8px #ffd6e8;}
+button{background:linear-gradient(45deg,#ff99cc,#ff66b2);color:white;border:none;padding:12px 28px;font-size:1rem;border-radius:30px;cursor:pointer;box-shadow:0 0 20px #ffcce0;transition:all .3s ease;margin-top:20px;animation:fadeIn 1s ease forwards;}
+button:hover{transform:scale(1.05);box-shadow:0 0 40px #ffb6c1,0 0 60px #fff0f5;}
+#musicBtn{margin-top:10px;font-size:.95rem;padding:6px 16px;background:#ff66b2;border-radius:20px;box-shadow:0 0 20px #ffcce0;}
+#response{font-size:1.2rem;color:#ff4d94;margin-top:15px;display:none;animation:fadeIn 1.2s ease forwards;}
+#heart{width:50px;height:50px;background:#ff4d94;position:relative;transform:rotate(-45deg);margin:25px auto;display:none;animation:heartbeat 1.2s infinite;}
+#heart::before,#heart::after{content:"";position:absolute;width:50px;height:50px;background:#ff4d94;border-radius:50%;}
+#heart::before{top:-25px;left:0;}#heart::after{left:25px;top:0;}
+.sparklText{animation:sparkleText 1s infinite;}
+@media(max-width:480px){.main-text{font-size:.9rem;}h1{font-size:1.5rem;}h2{font-size:1.1rem;}button{padding:10px 24px;font-size:.95rem;}#musicBtn{font-size:.85rem;padding:5px 14px;}}
+</style>
+</head>
+<body>
+<div class="bg" id="bg"></div>
+<div class="wrap">
+<h1 class="sparklText">Mi amor 💖</h1>
+<div class="main-text" id="mainText"></div>
+
+<!-- Carrusel de fotos -->
+<div class="carousel">
+  <div class="carousel-inner" id="carouselInner">
+    <img src="foto1.jpg" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+  </div>
+</div>
+
+<video id="video" controls playsinline preload="metadata">
+<source src="tiktok.mp4" type="video/mp4">
+</video>
+
+<button id="musicBtn">Pausar / Reproducir música 🎵</button>
+
+<h2>¿Quieres ser mi novia? 💞</h2>
+<button id="loveBtn">Sí ❤️</button>
+<div id="response">Entonces sí me amas 💖</div>
+<div id="heart"></div>
+</div>
+
+<audio id="music" loop>
+<source src="telepatia.mp3" type="audio/mpeg">
+</audio>
+<audio id="bell">
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3bb19f8e2a.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Sparkles, estrellas y corazones flotantes
+const bg=document.getElementById('bg');
+function spawnEffect(){
+  const s=document.createElement('div'); s.className='sparkle';
+  const size=4+Math.random()*5; s.style.width=s.style.height=size+'px';
+  s.style.left=Math.random()*100+'vw'; s.style.top='100vh';
+  bg.appendChild(s); setTimeout(()=>s.remove(),6000);
+
+  const star=document.createElement('div'); star.className='star';
+  const st=2+Math.random()*3; star.style.width=star.style.height=st+'px';
+  star.style.left=Math.random()*100+'vw'; star.style.top=Math.random()*100+'vh';
+  bg.appendChild(star); setTimeout(()=>star.remove(),4000);
+
+  const heart=document.createElement('div'); heart.className='heart-bg';
+  heart.style.left=Math.random()*100+'vw'; heart.style.top='100vh';
+  bg.appendChild(heart); setTimeout(()=>heart.remove(),6000);
+}
+setInterval(spawnEffect,300);
+
+// Texto máquina
+const text=`Mi amor, de verdad, al momento de yo ver que me terminaste se me cayo el corazon, por que de verdad deseo poder casarme contigo, deseo poder volver a dormir contigo, estuve desesperado, llorando, asustado, no sabia que hacer irene, solo pude pensar en los momentos donde eramos felices aunque solo paso una hora de que me terminaste, pero entiendo por que pensaste que te termine, fue mi culpa, pero yo si quiero estar contigo y disfrutar de todo tu amor y cariño, se muy bien que ya no me amas de la misma manera, de seguro volveras conmigo por pena, talvez incluso te vayas con otro por que te hago sentir muy mal, de seguro ya tienes ojos para otro pero, irene, yo te amo, y siempre lo hare, te prometo que me enamore de ti desde la primera vez que me dijiste vago, me enloqueci por ti mi chocorramito precioso, no pude parar de pensar en ti desde eso, me ponia muy celoso cuando hablabas con otro, aunque no fuesen mi novia queria decirte que tu eres mia, espero te guste esto, me costo mucho, pero te AMO DEMASIADO MI PEQUEÑA ENOJONAAA MWAAA ❤❤❤`;
+const textEl=document.getElementById('mainText'); let i=0;
+function typeWriter(){if(i<text.length){textEl.textContent+=text.charAt(i);i++;setTimeout(typeWriter,30);}else{document.getElementById('bell').play().catch(()=>{}); document.getElementById('heart').style.display='block';}}
+window.addEventListener('load',()=>{
+  setTimeout(typeWriter,800);
+  const music=document.getElementById('music');
+  const tryPlay=()=>music.play().catch(()=>{});
+  tryPlay();
+  document.body.addEventListener('click',tryPlay,{once:true});
+});
+
+// Botón "Sí ❤️"
+const btn=document.getElementById('loveBtn'); const resp=document.getElementById('response');
+btn.addEventListener('click',()=>{
+  resp.style.display='block';
+  btn.disabled=true;
+  btn.style.boxShadow='0 0 50px #ff99cc,0 0 80px #fff0f5';
+
+  // Corazones y confeti extra
+  for(let j=0;j<25;j++){
+    const c=document.createElement('div'); c.className='confetti';
+    c.style.left=Math.random()*100+'vw';
+    c.style.top='0px';
+    c.style.width=c.style.height=(4+Math.random()*6)+'px';
+    bg.appendChild(c);
+    setTimeout(()=>c.remove(),2000);
+  }
+
+  const heartClone=document.getElementById('heart').cloneNode(true);
+  document.body.appendChild(heartClone);
+  setTimeout(()=>heartClone.remove(),2500);
+});
+
+// Botón música
+const musicBtn=document.getElementById('musicBtn');
+const music=document.getElementById('music');
+musicBtn.addEventListener('click',()=>{
+  if(music.paused){music.play(); musicBtn.textContent="Pausar música 🎵";}
+  else{music.pause(); musicBtn.textContent="Reproducir música 🎵";}
+});
+
+// Pausa música si se reproduce video
+const video=document.getElementById('video');
+video.onplay=()=>{if(!music.paused){music.pause();}};
+video.onpause=()=>{if(!music.paused){music.play();}};
+video.onended=()=>{if(!music.paused){music.play();}};
+
+// Carrusel automático
+const carousel=document.getElementById('carouselInner');
+let cIndex=0;
+function nextSlide(){cIndex=(cIndex+1)%carousel.children.length; carousel.style.transform=`translateX(-${cIndex*100}%)`;}
+setInterval(nextSlide,3000);
+</script>
+</body>
+</html>
